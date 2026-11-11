@@ -104,28 +104,75 @@
 /* Pulse & Life chatbot next-step button animation */
 
 .chat-profile-actions button.chat-next-step {
-  border: 1px solid #20ad8c;
   background: #e8fff7;
+  border: 1px solid #20ad8c;
   color: #087d64;
   font-weight: 700;
-  animation: chatNextPulse 1.5s ease-in-out infinite;
-  box-shadow: 0 0 0 0 rgba(32, 173, 140, 0.4);
+  animation: chatPulse 1.5s infinite;
 }
 
-@keyframes chatNextPulse {
+@keyframes chatPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(32, 173, 140, 0.4);
-    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(32, 173, 140, .4);
   }
-
   70% {
     box-shadow: 0 0 0 7px rgba(32, 173, 140, 0);
-    transform: scale(1.03);
   }
-
   100% {
     box-shadow: 0 0 0 0 rgba(32, 173, 140, 0);
-    transform: scale(1);
+  }
+}
+#chatMessages {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: auto;
+  overflow-anchor: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* .chat-msg {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+} */
+#chatMessages .chat-msg {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  flex-shrink: 0;
+}
+#chatForm button[type="submit"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.chat-profile-group button.chat-next-step,
+.chat-profile-actions button.chat-next-step {
+  border: 1px solid #20ad8c;
+  background: #e9fff7;
+  color: #087d64;
+  font-weight: 700;
+  animation: pulseLifeChatButton 1.5s ease-in-out infinite;
+}
+@keyframes pulseLifeChatButton {
+  0% {
+    box-shadow: 0 0 0 0 rgba(32, 173, 140, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(32, 173, 140, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(32, 173, 140, 0);
+  }
+}
+
+[data-profile][hidden],
+[data-enquiry][hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-profile-group button.chat-next-step,
+  .chat-profile-actions button.chat-next-step {
+    animation: none;
   }
 }
 
@@ -138,7 +185,3 @@
   display: none !important;
 }
 
-.chat-msg {
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-}
