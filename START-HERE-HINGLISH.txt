@@ -1,0 +1,66 @@
+PULSE & LIFE NEXT.JS WEBSITE — QUICK START
+
+1) ZIP extract karo.
+2) Extracted Pulse_Life_NextJS folder ko VS Code mein open karo.
+3) VS Code > Terminal > New Terminal kholo.
+4) Ye command chalao:
+
+   npm install
+
+5) .env.example ki copy banao aur copy ka naam .env.local rakho.
+6) .env.local mein apna Apps Script Web App URL /exec ke saath paste karo:
+
+   GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+7) Development website start karo:
+
+   npm run dev
+
+8) Browser mein kholo:
+
+   http://localhost:3000
+
+5 pages:
+Home       /
+About      /about
+Products   /products
+Why Us     /why-us
+Contact    /contact
+
+Google Sheets:
+- Existing Apps Script aur spreadsheet ID ko same rakho.
+- Spreadsheet ko public mat karna; sharing Restricted rakho.
+- Headers docs/GOOGLE_SHEETS_HEADERS.txt mein hain.
+- Agar current Apps Script version pehle se working hai, Next.js frontend ke liye Apps Script redeploy karne ki zaroorat nahi.
+
+Production:
+   npm run build
+   npm run start
+
+IMPORTANT:
+- .env.local ko ZIP/GitHub mein upload mat karna.
+- Ab browser direct Google Apps Script ko call nahi karta. Next.js ke /api/sheets aur /api/chat server routes request forward karte hain.
+- GOOGLE_APPS_SCRIPT_URL server-side environment variable hai; ise .env.local mein rakho aur GitHub par upload mat karo.
+- .env.local badalne ke baad dev server Ctrl+C se band karke npm run dev dobara chalao.
+- Chat ke automatic replies keyword-guided hain; complex enquiries ke liye team Admin Reply column L mein reply kar sakti hai.
+- Real domain milne par NEXT_PUBLIC_SITE_URL ko domain ke saath set karke production build dobara banana.
+
+
+CHAT DUPLICATE / PROFILE HISTORY FIX (UPDATED)
+- Chat messages are rendered from Google Sheets history only. This avoids optimistic bubbles being repeated by the 3-second history poll.
+- Profile updates (Name / Email / Phone) are now stored as visible Profile messages in ChatMessages.
+- Admin replies continue to appear from the Admin Reply column.
+- Every submission stores the clean Next.js route path, for example /, /contact, /products. No .html page values are sent.
+
+SHOW OR HIDE CHAT SITE-WIDE
+- Open lib/site-config.js.
+- Set CHAT_WIDGET_ENABLED = true to show the widget on all pages.
+- Set CHAT_WIDGET_ENABLED = false to remove the launcher, panel and chat script from all pages.
+- Restart the Next.js server after changing this setting.
+
+IMPORTANT GOOGLE APPS SCRIPT UPDATE
+- Replace the Apps Script project code with docs/google-apps-script.gs.
+- Run setupSheets() only if the three tabs/headers have not been created yet. Do not run upgradeSheets() repeatedly.
+- Deploy > Manage deployments > Edit > New version > Deploy.
+- Keep Execute as: Me and Who has access: Anyone.

@@ -1,0 +1,12 @@
+Create these three tabs in the same private Google Spreadsheet. Header order must match exactly.
+
+ChatMessages (A1:M1)
+Date	Time	Timestamp	Session ID	Name	Email	Phone	Enquiry Type	Sender	Message	Page	Admin Reply	Reply Timestamp
+
+ContactInquiries (A1:I1)
+Date	Time	Timestamp	Name	Email	Phone	Subject	Message	Page
+
+NewsletterSubscriptions (A1:I1)
+Date	Time	Timestamp	Name	Email	Phone	Subscription Source	Page	Status
+
+Keep spreadsheet sharing set to Restricted. The public website submits through the Apps Script Web App URL; it does not need public spreadsheet access.
