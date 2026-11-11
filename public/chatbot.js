@@ -767,8 +767,7 @@
       !panel.contains(event.target) &&
       !launch.contains(event.target)
     ) {
-      closeChat();
-    }
+      closeChat();    }
   });
 
   panel.addEventListener("click", event => event.stopPropagation());

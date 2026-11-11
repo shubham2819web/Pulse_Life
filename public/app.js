@@ -59,7 +59,6 @@ contactEyebrow:"نحن هنا للمساعدة",contactHero:"دعونا نناق
 footerAbout:"شركة تجارية مقرها دبي للمنتجات شبه الصيدلانية والمستلزمات الطبية والجراحية والمنتجات الورقية.",quickLinks:"روابط سريعة",newsletterTitle:"ابقوا على تواصل",newsletterText:"اشتركوا لتلقي تحديثات الشركة والإعلانات.",footerNote:"أنشطة تجارية مرخصة • دبي، الإمارات",chatTitle:"تحدث مع فريقنا",chatSub:"اترك لنا رسالة وسنعاود التواصل معك.",chatWelcome:"مرحباً! كيف يمكننا مساعدتك اليوم؟"
 }
 };
-
 function applyLanguage(lang){
   const dict=translations[lang]||translations.en;
   document.documentElement.lang=lang;
