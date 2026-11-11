@@ -807,6 +807,5 @@
       if (restore) restore.hidden = false;
     }
   } catch (_) {}
-
   updateProfileButtons();
 })();
